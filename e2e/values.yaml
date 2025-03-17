@@ -1,0 +1,42 @@
+gubernator:
+
+  fullnameOverride: {}
+  nameOverride: {}
+  priorityClassName: {}
+
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    cpuAverageUtilization: 50
+
+  image:
+    repository: ghcr.io/gubernator-io/gubernator
+    pullPolicy: IfNotPresent
+    tag: "latest"
+
+  debug: true
+
+  server:
+    http:
+      port: "1050"
+    grpc:
+      port: "1051"
+
+  annotations: { }
+
+  serviceAccount:
+    create: true
+    name: "teste"
+
+  nodeSelector: {}
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 150Mi
+
+  serviceMonitor:
+    create: false
+    interval: 5s
+    scrapeTimeout: 5s
